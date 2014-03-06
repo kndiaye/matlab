@@ -1,0 +1,63 @@
+function  s = noaccents(s)
+%NOACCENTS - Convert LATIN-1 string to ASCII (remove accents)
+%   [S] = noaccents(str)
+%
+%   Example
+%       >> noaccents
+%
+%   See also:
+
+% Author: K. N'Diaye (kndiaye01<at>yahoo.fr)
+% Copyright (C) 2008
+% This program is free software; you can redistribute it and/or modify it
+% under the terms of the GNU General Public License as published by  the
+% Free Software Foundation; either version 2 of the License, or (at your
+% option) any later version: http://www.gnu.org/copyleft/gpl.html
+%
+% ----------------------------- Script History ---------------------------------
+% KND  2008-10-08 Creation
+%
+% ----------------------------- Script History ---------------------------------
+if iscell(s)
+    for i=1:numel(s)
+        s{i}=noaccents(s{i});
+    end
+    return
+end
+if ~ischar(s)
+    return
+end
+    
+j=find(double(s)>127);
+
+LATIN1=[
+    'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏ'...
+    'ÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞß'...
+    'àáâãäåæçèéêëìíîï'...
+    'ðñòóôõö÷øùúûüýþÿ'...
+    131 ...
+    135 ...
+    141 ...
+    142 143 144 145 ...
+    148 149 ... %î ï
+    150 ... %ñ
+    151 153 ... %?o ô
+    ];
+
+ASCII=[
+    'AAAAAAACEEEEIIII'...
+    'DNOOOOO*OUUUUY_S'...
+    'aaaaaaaceeeeiiii'...
+    'dnooooo:ouuuuy_y'...
+    'E' ...
+    'a' ...
+    'c' ...
+    'eeee' ...
+    'ii' ...
+    'n' ...
+    'oo' ...
+    ];
+
+[i,i]=ismember(s(j),LATIN1);
+s(j(i==0))='_';
+s(j(i>0))=ASCII(i(i>0));

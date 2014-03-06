@@ -1,0 +1,30 @@
+#VRML V2.0 utf8
+WorldInfo {title "Matlab-VRML"}
+NavigationInfo {
+ headlight FALSE
+ type "EXAMINE"
+}
+Shape {
+   geometry IndexedFaceSet {
+   appearance Appearance {
+        material  Material {
+            ambientIntensity 0.4
+            diffuseColor  0.2 0.7 0.2
+            shininess 1.0
+            specularColor 0.3 0.3 0.3
+            }
+        }
+   coord Coordinate{
+     point [
+     0 0 0
+     1 1 0
+     -1 0 0
+     1 1 1
+     -1 1 1
+     -1 -1 1 ]}
+     color Color { color [1 0 0, 0 1 0, 0 0 1]}
+   colorIndex [0 1 2 -1 0 0 1]
+   colorPerVertex TRUE
+   coordIndex [0 1 2 -1, 3 4 5]
+}
+}

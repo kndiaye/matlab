@@ -1,0 +1,24 @@
+1 2 3 5 43 | intermediate postcentral area 1 + caudal postcentral area 2 + rostral postcentral area 3 + preparietal area 5 + subcentral area 43
+4 | precentral gigantopyramidal area 4
+6 | agranular frontal area 6
+7 | superior parietal area 7
+8 | intermediate frontal area 8
+9 | granular frontal area 9
+10 | frontopolar area 10
+11 12 25 47 |  prefrontal area 11 + rostral area 12 + subgenual area 25 + orbital area 47
+13 | insular area 13
+17 | striate area 17
+18 | parastriate area 18
+19 | peristriate area 19; 
+20 | inferior temporal area 20
+21 | middle temporal area 21
+22 | superior temporal area 22
+23 31 26 29 30 | posterior cingulate & retrosplenial : ventral posterior cingulate area 23 + dorsal posterior cingulate area 31 + ectosplenial area 26 + granular retrolimbic area 29 + agranular retrolimbic area 30
+24 32 33 | anterior cingulate : ventral anterior cingulate area 24 + dorsal anterior cingulate area 32 + pregenual area 33
+27 28 34 35 36 | hippocampal region : presubiculum 27 + entorhinal area 28 + dorsal entorhinal area 34 + perirhinal area 35 + ectorhinal area 36
+37 | occipitotemporal area 37
+38 | temporopolar area 38
+39 | angular area 39
+40 | supramarginal area 40
+41 42 | anterior transverse temporal area 41 + posterior transverse temporal area 42
+44 45 46 | opercular area 44 + triangular area 45 + middle frontal area 46

@@ -1,0 +1,11 @@
+#!/bin/tcsh -xfv
+
+foreach mine ( *.m )
+    echo $mine:t
+    set updated = ` find ../../../mtoolbox/brainstorm3 -name $mine:t `
+    echo "Comparing "$updated $mine
+    kdiff3 $updated $mine -m -o $mine
+    if  ($? == 1 ) then
+	exit(1)
+    end
+end

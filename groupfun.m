@@ -62,16 +62,13 @@ end
 s(1)=ng;
 R=reshape(R,s);
 if nargout==0
-<<<<<<< .mine
-   disp([ 'Grouping by ' inputname(2) ':']);
-   disp(uG) 
-   disp(n)
-=======
+%    disp([ 'Grouping by ' inputname(2) ':']);
+%    disp(uG) 
+%    disp(n)
    disp('Grouping: Result');
    for i=1:ng
        disp([ sprintf2(uG(i)) ' (n=' sprintf2(n(i)) '): ' sprintf2(R(i,:)) ]);
    end
->>>>>>> .r684
    if any(isnan(uG))
        disp('For NaN''s:')
        disp(feval(varargin{1},X(isnan(uG(g)),:),varargin{2:end}));

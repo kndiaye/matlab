@@ -7,10 +7,10 @@ function h = patchplot(X,Y,varargin)
 %   Example
 %       >> patchplot
 %
-%   See also: 
+%   See also:
 
 % Author: K. N'Diaye (kndiaye01<at>yahoo.fr)
-% Copyright (C) 2009 
+% Copyright (C) 2009
 % This program is free software; you can redistribute it and/or modify it
 % under the terms of the GNU General Public License as published by  the
 % Free Software Foundation; either version 2 of the License, or (at your
@@ -18,7 +18,7 @@ function h = patchplot(X,Y,varargin)
 %
 % ----------------------------- Script History ---------------------------------
 % KND  2009-04-06 Creation
-%                   
+%
 % ----------------------------- Script History ---------------------------------
 
 if nargin==1
@@ -44,13 +44,12 @@ if nargin>1
         end
     end
 end
-    
+
 minY = zeros(1,size(Y,2))+bl;
 % minY(all(Y>=0,1),:)=min(Y,[],1);
 % minY(all(Y<=0,1),:)=min(Y,[],1);
 X=X([1 1:end end]);
 Y = [minY;Y;minY];
-
 %Y(end+1,:) = Y(1,:);
 
 for i=1:size(Y,2)

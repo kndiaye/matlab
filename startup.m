@@ -1,7 +1,11 @@
 DoMatlabUpdate = false;
+CheckUSBDirectory = false ;
 disp('Hi Karim,')
 [hostname,hostname]=system('hostname');
 switch upper(deblank(hostname))
+    case 'PUMA-NDIAYE.LOCAL'
+        disp('Welcome on Karim''s Retina Macbook Pro!')
+        cd('~/matlab');
     case 'D5BDS81J'
         disp('Welcome on FREDERIC''s PC!')
     case 'IMAGERIE2-PV'
@@ -9,8 +13,7 @@ switch upper(deblank(hostname))
         DoMatlabUpdate = 0;
     case 'MONTBLANC'
         disp('Welcome on the MONTBLANC Linux Blast @ LabNIC!')
-    case 'KARIMND'
-        
+    case 'KARIMND'        
         disp('Welcome on the LENA138/Windows station!')
         homedir = 'E:/ndiaye/home';                
     otherwise
@@ -39,30 +42,31 @@ else
     %cd(fullfile(HOMEDIR, 'matlab'))
 end
 
-
-[USBDIR]=usbpath;
-
-
-if isempty(USBDIR) || any(isnan(USBDIR))
-    warning(sprintf(['No USB key found.\n' ...
-        'USBDIR variable unset']))
-    clear USBDIR
-elseif not(exist(USBDIR, 'dir'))
-    warning(sprintf(['Directory %s does not exist!\n' ...
-        'USBDIR variable unset'], USBDIR))
-    clear USBDIR
-else
-    disp(sprintf('USB key is: %s', USBDIR))
-    %    addpath(fullfile(USBDIR, 'mtoolbox', 'lib'));
-    addpath(fullfile(USBDIR, 'matlab'));
-    if DoMatlabUpdate
-        if exist('C:\Program Files\WinMerge')
-            if exist(HOMEDIR,'dir') && exist(USBDIR,'dir')
-                system(['"C:\Program Files\WinMerge\WinMerge.exe" /r /e /f "*.m" /x ' fullfile(HOMEDIR, 'matlab') ' ' fullfile(USBDIR, 'matlab')])
+if CheckUSBDirectory
+    [USBDIR]=usbpath;
+    if isempty(USBDIR) || any(isnan(USBDIR))
+        warning(sprintf(['No USB key found.\n' ...
+            'USBDIR variable unset']))
+        clear USBDIR
+    elseif not(exist(USBDIR, 'dir'))
+        warning(sprintf(['Directory %s does not exist!\n' ...
+            'USBDIR variable unset'], USBDIR))
+        clear USBDIR
+    else
+        disp(sprintf('USB key is: %s', USBDIR))
+        %    addpath(fullfile(USBDIR, 'mtoolbox', 'lib'));
+        addpath(fullfile(USBDIR, 'matlab'));
+        if DoMatlabUpdate
+            if exist('C:\Program Files\WinMerge')
+                if exist(HOMEDIR,'dir') && exist(USBDIR,'dir')
+                    system(['"C:\Program Files\WinMerge\WinMerge.exe" /r /e /f "*.m" /x ' fullfile(HOMEDIR, 'matlab') ' ' fullfile(USBDIR, 'matlab')])
+                end
             end
         end
     end
 end
+
+
 
 % try
 %     addpath 'C:\Program Files\MATLAB704\toolbox\matlab\datafun\'
@@ -76,6 +80,14 @@ end
 
 % SVN update
 switch upper(deblank(hostname))
+    case 'PUMA-NDIAYE.LOCAL'
+        disp('GITHUB update...')
+        !git update ~/matlab
+        !git commit ~/matlab --message "Automatic update by startup.m"
+        disp('MEGFRONT SVN update...')
+        !svn update ~/matlab
+        !svn commit ~/matlab --message "Automatic update by startup.m"
+        
     case 'D5BDS81J'
         disp('SVU update...')
         !svn update

@@ -115,3 +115,6 @@ end
 if all(isnan(S)) %verticalize Y 
     Y=Y(:);
 end
+<<<<<<< .mine
+=======
+    >>>>>>> .r687

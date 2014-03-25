@@ -27,7 +27,6 @@ elseif isa(varargin{1}, 'java') && isequal(get(varargin{1}, 'Type'), 'java.awt.e
 else 
     
 end
-'weez'
 out=eval(sprintf('action_%s(varargin{:});', action));
 if nargout>0
     varargout=out;
@@ -64,7 +63,7 @@ end
 delete(h);
 % setappdata(ha,'RootPane',RootPane);
 wz.RootPane=RootPane;
-set(RootPane,'MouseWheelMovedCallback',[ str2func(sprintf('%s', mfilename))]);
+set(RootPane,'MouseWheelMovedCallback',str2func(sprintf('%s', mfilename)));
 setappdata(ha,mfilename,wz);
 varargout={{}};
 

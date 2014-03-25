@@ -70,9 +70,9 @@ for i_S=1:nS
 		    x=x(:,2);	
 		  end
                 else
-                    x = {struct2list(x{1}, depth-1)};
+		  x = {struct2list(x{1}, depth-1)};
                 end
-            end
+	    end
         end
         D = [ D ; [fi x]];
     end

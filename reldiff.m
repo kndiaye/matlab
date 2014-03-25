@@ -36,6 +36,7 @@ end
 nX=size(X,D);
 r=diff(X,N,D);
 X=abs(X);
+<<<<<<< .mine
 
 switch mode
     case 'sum'
@@ -50,3 +51,18 @@ switch mode
         error
 end
 return
+=======
+
+switch mode
+    case 'sum'
+        r = r ./ (subarray(X,1:nX-1,D) + subarray(X,2:nX,D));
+    case 'mean'
+        r = r ./ (subarray(X,1:nX-1,D) + subarray(X,2:nX,D))*2;
+    case 'first'
+        r = r ./ (subarray(X,1:nX-1,D));        
+    case 'second'
+        r = r ./ (subarray(X,2:nX,D));
+    otherwise
+        error
+end
+return>>>>>>> .r687

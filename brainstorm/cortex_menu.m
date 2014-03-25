@@ -125,7 +125,9 @@ function []=action_vertconn_state(ho,hctx)
 if ~exist('tess_vertices_connectivity')
     try
         figure
-        addpath('~/mtoolbox/brainstorm3/toolbox/misc/')
+        if ~ispc
+            addpath('~/mtoolbox/brainstorm3/toolbox/misc/')
+        end
         addpath('/mtoolbox/brainstorm3/toolbox/misc/')
     end
     if ~exist('tess_vertices_connectivity')

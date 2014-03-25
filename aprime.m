@@ -3,7 +3,7 @@ function [A,U,Z] = aprime(X1,X2,dim)
 %   [] = aprime(X1,X2[,dim])
 %   Default dim = 1
 %   Example
-%       >> aprime
+%       >> aprime(conf_correct,conf_incorrect)
 %
 %   See also: 
 % Reference: 
@@ -28,9 +28,11 @@ n2=s(2,dim);
 ranks = tiedrank(cat(dim,X1,X2),dim);
 n1n2 = n1.*n2;
 A = (sum(ranks(1:n1,:),dim)-n1*(n1+1)/2)/n1n2;
-if nargout > 2
-    U =A*n1n2;
-    Z = (U-n1*(n1+n2+1)/2)/sqrt(n1n2*(n1+n2+1)/12);
+if nargout > 1
+    U = A*n1n2;
+    if nargout > 2
+        Z = (U-n1*(n1+n2+1)/2)/sqrt(n1n2*(n1+n2+1)/12);
+    end
 end
 return
 

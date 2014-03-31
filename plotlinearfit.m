@@ -1,10 +1,7 @@
-<<<<<<< .mine
 function [h,slope,offset,R2,SCE,P,T] = plotlinearfit(Y,X,varargin)
-=======
-function [h,R2,slope,offset,SCE,P,T] = plotlinearfit(Y,X,varargin)
->>>>>>> .r687
 %PLOTLINEARFIT - One line description goes here.
-%   [h,R2,slope,offset,SCE,P,T] = plotlinearfit(Y,X)
+%   [h,slope,offset,R2,SCE,P,T] = plotlinearfit(Y,X)
+%   [h,info] = plotlinearfit(Y,X)
 %
 %   Example
 %       >> plotlinearfit(Y,X)
@@ -43,11 +40,8 @@ if size(X,2) == 1
     h=plot(X, Y,'.', varargin{:});
 elseif size(X,2) == 2
     for i=1:size(Y,2)
-<<<<<<< .mine
         h(i)=stem(X(:,1),X(:,2),Y(:,i),'.', varargin{:});
-=======
-        h(i)=stem(X(:,1),X(:,2),Y(:,i), 'x',varargin{:});
->>>>>>> .r687
+%        h(i)=stem(X(:,1),X(:,2),Y(:,i), 'x',varargin{:});
     end
 else
 end
@@ -56,19 +50,12 @@ h=h(:);
 set(h, 'linestyle', 'none')
 [xx]=axis;
 for i=1:size(Y,2)
-<<<<<<< .mine
     h(i,2)=plot(xx(1:2)', xx(1:2)'*slope(i)+(xx(1:2)'.*0+1)*offset(i), ...
         '--', 'Color', get(h(i), 'Color'), 'Marker', 'none'); 
     hold on
-=======
-    h(i,2)=plot(xx(1:2)', xx(1:2)'*slope(i)+(xx(1:2)'.*0+1)*offset(i), ...
-		'--', 'Color', get(h(i), 'Color')); 
-    hold on
->>>>>>> .r687
 end
 set(h(P<.05,2),'LineStyle', '-');
 hold off
-<<<<<<< .mine
 if nargout==0
     set(h(P>0.05,2),'LineStyle',':');
     fprintf('Slope....: %s\n',sprintf('% 5.2g\t',slope));
@@ -78,9 +65,7 @@ if nargout==0
     fprintf('SCE......: %s\n',sprintf('% 5.2g\t',SCE));
     fprintf('T........: %s\n',sprintf('% 5.2g\t',T));
 end
-=======
 if nargout == 2
     slope=struct('slope',slope,'offset',offset,'r2',R2,'sce',SCE,'p',P,'t',T);
 end
->>>>>>> .r687
 

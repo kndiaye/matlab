@@ -3,7 +3,7 @@ function [Qc,HSDc,Q,pairs,X] = tukeyhsd(varargin)
 %   [Qc] = tukeyhsd(dfe,ng,alpha)
 %   Qc: critical Q of the Studentized range statistic for the number of
 %       freedom (df), the number of groups (ng) at the level: p<alpha
-%       All groups must have equal df. 
+%       All groups must have equal df.
 %
 %   [Qc,HSDc] = tukeyhsd(dfe,ng,alpha,ns,MSe)
 %   Qc: (same as above)
@@ -19,7 +19,7 @@ function [Qc,HSDc,Q,pairs,X] = tukeyhsd(varargin)
 %   Output:
 %       pairs: list of all pairwise comparisons
 %       Q: Q-value for each pair
-%       MX: 
+%       MX:
 %
 %   Example
 %       >> tukeyhsd
@@ -59,7 +59,7 @@ else
     X=varargin{1};
     nf=varargin{2};
     fx=varargin{3};
-    alpha=varargin{4};   
+    alpha=varargin{4};
     dfe=varargin{5};
     SSe=varargin{6};
     sx=size(X);
@@ -153,17 +153,17 @@ qtukey(dfe,3,0.95)
 
 % http://facultyvassar.edu/lowry/ch14pt2.html
 x =[
-   27.0000   26.2000   28.8000   33.5000   28.8000
-   22.8000   23.1000   27.7000   27.6000   24.0000
-   21.9000   23.4000   20.1000   27.8000   19.3000
-   23.5000   19.6000   23.7000   20.8000   23.9000
-];
+    27.0000   26.2000   28.8000   33.5000   28.8000
+    22.8000   23.1000   27.7000   27.6000   24.0000
+    21.9000   23.4000   20.1000   27.8000   19.3000
+    23.5000   19.6000   23.7000   20.8000   23.9000
+    ];
 % Line("groups") means:
-% Ma=28.86 	Mb=25.04 	Mc=22.50 	Md=22.30 
+% Ma=28.86 	Mb=25.04 	Mc=22.50 	Md=22.30
 
-% Sources                     SS    df  	MS      F       P 
+% Sources                     SS    df  	MS      F       P
 % between groups ("effect") 140.10   3  46.70    6.42	<.01
-% within groups ("error") 	116.32  16	7.27    
+% within groups ("error") 	116.32  16	7.27
 %   TOTAL                   256.42	19
 %
 % a versus b :
@@ -183,3 +183,94 @@ x =[
 % even at the basic .05 level
 
 % eta2 = SSbg / SST = 140.10 / 256.42 = 0.55
+
+
+%% Conrad
+
+% http://webcache.googleusercontent.com/search?q=cache:n8SsSOk1Z_YJ:geai.univ-brest.fr/~carpenti/2006-2007/ANOVA-Tukey.doc+&cd=4&hl=fr&ct=clnk
+% sujet age(5/12, btw) phono(100/200, within) score
+Conrad = [
+    10001
+    5
+    100
+    15
+    10002
+    5
+    100
+    23
+    10003
+    5
+    100
+    12
+    10004
+    5
+    100
+    16
+    10005
+    5
+    100
+    14
+    10006
+    12
+    100
+    40
+    10007
+    12
+    100
+    38
+    10008
+    12
+    100
+    31
+    10009
+    12
+    100
+    36
+    100010
+    12
+    100
+    30
+    10001
+    5
+    200
+    14
+    10002
+    5
+    200
+    20
+    10003
+    5
+    200
+    11
+    10004
+    5
+    200
+    17
+    10005
+    5
+    200
+    13
+    10006
+    12
+    200
+    33
+    10007
+    12
+    200
+    23
+    10008
+    12
+    200
+    21
+    10009
+    12
+    200
+    26
+    100010
+    12
+    200
+    22]
+reshape(Conrad,4,[])
+% X = phono x age x subj:
+X=permute(reshape(Conrad(4:4:end),5,2,2),[2 3 1])
+

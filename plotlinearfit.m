@@ -23,6 +23,13 @@ function [h,slope,offset,R2,SCE,P,T] = plotlinearfit(Y,X,varargin)
 if nargin<1
     error('No data!')
 end
+if numel(Y)==prod(size(Y))
+    Y=Y(:);
+    if nargin>=2
+        X=X(:);
+    end
+end
+
 switch nargin
     case 0
         error('No input!')
@@ -36,12 +43,12 @@ end
 %     text(median(roi.allregressors), quantile(roi.allcons,.90), {'Correlation: '  sprintf('r2 = %g\np = %g', r2,p)})
 %     xlabel(xSPM.SPM.xX.name(find(xSPM.SPM.xCon(Icc).c)))
 %     ylabel(xSPM.SPM.xY.VY(1).descrip)
-if size(X,2) == 1
+if size(X,2) == 1    
     h=plot(X, Y,'.', varargin{:});
 elseif size(X,2) == 2
     for i=1:size(Y,2)
         h(i)=stem(X(:,1),X(:,2),Y(:,i),'.', varargin{:});
-%        h(i)=stem(X(:,1),X(:,2),Y(:,i), 'x',varargin{:});
+        %        h(i)=stem(X(:,1),X(:,2),Y(:,i), 'x',varargin{:});
     end
 else
 end
@@ -51,7 +58,7 @@ set(h, 'linestyle', 'none')
 [xx]=axis;
 for i=1:size(Y,2)
     h(i,2)=plot(xx(1:2)', xx(1:2)'*slope(i)+(xx(1:2)'.*0+1)*offset(i), ...
-        '--', 'Color', get(h(i), 'Color'), 'Marker', 'none'); 
+        '--', 'Color', get(h(i), 'Color'), 'Marker', 'none');
     hold on
 end
 set(h(P<.05,2),'LineStyle', '-');

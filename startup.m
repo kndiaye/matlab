@@ -82,7 +82,7 @@ end
 switch upper(deblank(hostname))
     case 'PUMA-NDIAYE.LOCAL'
         disp('GITHUB update...')
-        !git update ~/matlab
+        !git pull ~/matlab
         !git commit ~/matlab --message "Automatic update by startup.m"
         disp('MEGFRONT SVN update...')
         !svn update ~/matlab

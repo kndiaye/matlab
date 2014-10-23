@@ -65,5 +65,9 @@ end
 if nargout>2
     [J,J]=ismember(J,i);
 elseif nargout==0
-    E=[E N];
+    if iscell(E)
+        E= [E num2cell(N)];
+    else
+        E=[E N];
+    end
 end

@@ -1,7 +1,7 @@
 function [dprime,logbeta,c] = sdt(varargin)
 %SDT - Signal detection théory computations (d-prime, beta, criterion)
 %   [dprime,logb,c] = sdt(s,r) where s and r are two vectors of 0's and 1's
-%       
+%   OR:       [...] = sdt(SR) where SR is a N-by-2 matrix equals to [s r]
 %   Example
 %       >> 
 %
@@ -18,6 +18,11 @@ function [dprime,logbeta,c] = sdt(varargin)
 % KND  2009-03-24 Creation
 %                   
 % ----------------------------- Script History ---------------------------------
+
+if nargin<2 && size(s,2)==2
+    r = s(:,2);
+    s = s(:,1);
+end
 
 s=logical(varargin{1}(:));
 r=logical(varargin{2}(:));

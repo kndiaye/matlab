@@ -21,6 +21,10 @@ function [auc] = roc(s,r,c,varargin)
 % KND  2009-04-07 Creation
 %
 % ----------------------------- Script History ---------------------------------
+if nargin<2 && size(s,2)==2
+    r = s(:,2);
+    s = s(:,1);
+end
 s=logical(s);
 r=logical(r);
 if nargin<3

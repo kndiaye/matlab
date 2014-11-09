@@ -381,12 +381,18 @@ if verbose
         % Plot data
         try
             figure
-            for i=1:min(prod(svar),9)*verbose
-                subplot(3,3,i);
+            for i=1:min(prod(svar),9)*(verbose==true)
+                if prod(svar)>1
+                    subplot(3,3,i);
+                end
                 if nf==2
                     barerrorbar(X(:,:,:,i));
                 else
                      barerrorbar(X(:,:,i));
+                end
+                xlabel('Factor 1');
+                if prod(svar)>1
+                    title(sprintf('Unviariate dimension %d',i));
                 end
             end
         catch
